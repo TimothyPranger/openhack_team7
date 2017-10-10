@@ -1,0 +1,71 @@
+{
+  "inputs": [
+    {
+      "type": "EventSource",
+      "sources": [
+        //{ "providerName": "Microsoft-ServiceFabric-Services" },
+        //{ "providerName": "Microsoft-ServiceFabric-Actors" },
+        { "providerName": "MyCompany-Team7-MonitoringEventFlowService" }
+      ]
+    },
+    {
+      "type": "PerformanceCounter",
+      "sampleIntervalMsec": "5000",
+      "counters": [
+        {
+          "counterCategory": "Memory",
+          "counterName": "Available MBytes"
+        },
+        {
+          "counterCategory": "Memory",
+          "counterName": "Available KBytes"
+        },
+        {
+          "counterCategory": "Memory",
+          "counterName": "Available Bytes"
+        },
+        {
+          "counterCategory": "Memory",
+          "counterName": "Committed Bytes"
+        },
+        {
+          "counterCategory": "Process",
+          "counterName": "Private Bytes"
+        }      
+      ]
+    }
+  ],
+      "filters": [
+        {
+          "type": "drop",
+          "include": "Level == Verbose"
+        }
+      ],
+      "outputs": [
+        //{
+        //  "type": "StdOutput"
+        //},
+        // Please update the instrumentationKey.
+        {
+          "type": "ApplicationInsights",
+          "instrumentationKey": "4e8a09ff-e8eb-470d-8633-71414e89a701"
+        }
+
+      ],
+      "schemaVersion": "2016-08-11",
+      // "healthReporter": {
+      //   "type": "CsvHealthReporter",
+      //   "logFileFolder": ".",
+      //   "logFilePrefix": "HealthReport",
+      //   "minReportLevel": "Warning",
+      //   "throttlingPeriodMsec": "1000"
+      // },
+      // "settings": {
+      //    "pipelineBufferSize": "1000",
+      //    "maxEventBatchSize": "100",
+      //    "maxBatchDelayMsec": "500",
+      //    "maxConcurrency": "8",
+      //    "pipelineCompletionTimeoutMsec": "30000"
+      // },
+      "extensions": []
+    }
