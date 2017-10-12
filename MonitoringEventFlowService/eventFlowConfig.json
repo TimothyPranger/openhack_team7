@@ -19,20 +19,16 @@
         {
           "counterCategory": "Memory",
           "counterName": "Committed Bytes",
-          "collectionIntervalMsec": "1000"
+          "collectionIntervalMsec":  "1000" 
         },
         {
           "counterCategory": "Cpu",
           "counterName": "% Processor Time",
-          "collectionIntervalMsec": "1000"
-        },
-        {
-          "counterCategory": "Process",
-          "counterName": "Private Bytes"
+          "collectionIntervalMsec":  "1000" 
         }
       ]
     }
-  ], 
+  ],
   "outputs": [
     {
       "type": "ApplicationInsights",

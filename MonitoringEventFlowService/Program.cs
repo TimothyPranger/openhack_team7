@@ -23,27 +23,47 @@ namespace MonitoringEventFlowService
                 // When Service Fabric creates an instance of this service type,
                 // an instance of the class is created in this host process.
                 // **** Instantiate log collection via EventFlow
-                using (var diagnosticsPipeline =
-                    ServiceFabricDiagnosticPipelineFactory.CreatePipeline("MyApplication-MyService-DiagnosticsPipeline")
-                )
-                {
-                    System.Diagnostics.Trace.TraceWarning("EventFlow is working!");
 
-                    ServiceRuntime.RegisterServiceAsync("MonitoringEventFlowServiceType",
-                        context => new MonitoringEventFlowService(context)).GetAwaiter().GetResult();
+                System.Diagnostics.Trace.TraceWarning("EventFlow is working!");
 
-                    ServiceEventSource.Current.ServiceTypeRegistered(Process.GetCurrentProcess().Id,
-                        typeof(MonitoringEventFlowService).Name);
+                ServiceRuntime.RegisterServiceAsync("MonitoringEventFlowServiceType",
+                    context => new MonitoringEventFlowService(context)).GetAwaiter().GetResult();
 
-                    // Prevents this host process from terminating so services keep running.
-                    Thread.Sleep(Timeout.Infinite);
-                }
+                ServiceEventSource.Current.ServiceTypeRegistered(Process.GetCurrentProcess().Id,
+                    typeof(MonitoringEventFlowService).Name);
+
+                // Prevents this host process from terminating so services keep running.
+                Thread.Sleep(Timeout.Infinite);
             }
             catch (Exception e)
             {
+                string sSource;
+                string sLog;
+                string sEvent;
+
+                sSource = "Timothy";
+                sLog = "Application";
+                sEvent = Bubble(e);
+
+                if (!EventLog.SourceExists(sSource))
+                    EventLog.CreateEventSource(sSource, sLog);
+
+                EventLog.WriteEntry(sSource, sEvent);
+                EventLog.WriteEntry(sSource, sEvent,
+                    EventLogEntryType.Error, 234); 
+
                 ServiceEventSource.Current.ServiceHostInitializationFailed(e.ToString());
                 throw;
             }
+        }
+
+        private static string Bubble (Exception ex)
+        {
+            if (ex == null)
+            {
+                return string.Empty;
+            }
+            return string.Format("ex: {0}, stack:{1};  {2}", ex.Message, ex.StackTrace, Bubble(ex.InnerException));
         }
     }
 }

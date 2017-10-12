@@ -9,18 +9,24 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonitoringEventFlowService"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
 		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F7600075-D479-4FBD-9210-DCFDAA70F4C1}.Debug|Any CPU.ActiveCfg = Debug|x64
 		{F7600075-D479-4FBD-9210-DCFDAA70F4C1}.Debug|x64.ActiveCfg = Debug|x64
 		{F7600075-D479-4FBD-9210-DCFDAA70F4C1}.Debug|x64.Build.0 = Debug|x64
 		{F7600075-D479-4FBD-9210-DCFDAA70F4C1}.Debug|x64.Deploy.0 = Debug|x64
+		{F7600075-D479-4FBD-9210-DCFDAA70F4C1}.Release|Any CPU.ActiveCfg = Release|x64
 		{F7600075-D479-4FBD-9210-DCFDAA70F4C1}.Release|x64.ActiveCfg = Release|x64
 		{F7600075-D479-4FBD-9210-DCFDAA70F4C1}.Release|x64.Build.0 = Release|x64
 		{F7600075-D479-4FBD-9210-DCFDAA70F4C1}.Release|x64.Deploy.0 = Release|x64
+		{012E83F6-574F-4FFF-B53F-2B127BC51726}.Debug|Any CPU.ActiveCfg = Debug|x64
 		{012E83F6-574F-4FFF-B53F-2B127BC51726}.Debug|x64.ActiveCfg = Debug|x64
 		{012E83F6-574F-4FFF-B53F-2B127BC51726}.Debug|x64.Build.0 = Debug|x64
+		{012E83F6-574F-4FFF-B53F-2B127BC51726}.Release|Any CPU.ActiveCfg = Release|x64
 		{012E83F6-574F-4FFF-B53F-2B127BC51726}.Release|x64.ActiveCfg = Release|x64
 		{012E83F6-574F-4FFF-B53F-2B127BC51726}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
